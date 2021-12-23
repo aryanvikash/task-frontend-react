@@ -1,5 +1,5 @@
 import { call, put } from "redux-saga/effects";
-import { loadingBoard } from "src/Redux/reducers/boards.reducer";
+
 import {
   fetchtodo,
   savetodos,
@@ -10,6 +10,7 @@ import {
   requestDeleteTodo,
   requestGetTodos,
   requestMarkCompleteTodo,
+  requestUpdateTask,
 } from "../requests/todos.request";
 
 export function* handleGetTodo(action: any): any {
@@ -51,6 +52,17 @@ export function* HandleAddnewTask(action: any): any {
     yield put(setTodoLoading(true));
     yield call(requestAddNewTask, boardId, todo);
     yield put(fetchtodo(boardId));
+    yield put(setTodoLoading(false));
+  } catch (error) {
+    console.log(error);
+  }
+}
+export function* HandlerUpdateTask(action: any): any {
+  try {
+    const { todo, content } = action.payload;
+    yield put(setTodoLoading(true));
+    yield call(requestUpdateTask, todo.id, content);
+    yield put(fetchtodo(todo.board.id));
     yield put(setTodoLoading(false));
   } catch (error) {
     console.log(error);

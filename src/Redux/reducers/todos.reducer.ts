@@ -6,6 +6,7 @@ export const SAVE_TODOS = "SAVE_TODOS";
 export const ADD_TODO = "ADD_TODO";
 export const MARKCOMPLETE_TODO = "MARKCOMPLETE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
+export const UPDATE_TODO = "UPDATE_TODO";
 
 export const setTodoLoading = (loading: boolean) => ({
   type: SET_TODO_LOADING,
@@ -27,6 +28,11 @@ export const addtodo = (boardId: Number, todo: any) => ({
   payload: { boardId, todo },
 });
 
+
+export const upadteTodo = (todo:any, content: any) => ({
+  type: UPDATE_TODO,
+  payload: { todo, content },
+});
 export const deletetodo = (todo: any) => ({
   type: DELETE_TODO,
   payload: todo,

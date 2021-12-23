@@ -4,12 +4,14 @@ import {
   HandledeleteTodo,
   handleGetTodo,
   HandleMarkCompleteTodo,
+  HandlerUpdateTask,
 } from "./handlers/todo.handler";
 import {
   ADD_TODO,
   DELETE_TODO,
   FETCH_TODOS,
   MARKCOMPLETE_TODO,
+  UPDATE_TODO,
 } from "../reducers/todos.reducer";
 import {
   handleAddnewBoard,
@@ -31,5 +33,6 @@ export function* watcherSaga() {
     takeLatest(FETCH_BOARDS, handleGetBoard),
     takeLatest(ADD_BOARD, handleAddnewBoard),
     takeLatest(DELETE_BOARD, handleDeleteBoard),
+    takeLatest(UPDATE_TODO, HandlerUpdateTask),
   ]);
 }

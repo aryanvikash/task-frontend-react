@@ -16,3 +16,9 @@ export function requestAddNewTask(boardId: Number, todo: any) {
     board: boardId,
   });
 }
+
+export function requestUpdateTask(id: Number, content: any) {
+  return axios.patch(`${config.apiUrl}/todos/${id}`, {
+    content: content,
+  });
+}
